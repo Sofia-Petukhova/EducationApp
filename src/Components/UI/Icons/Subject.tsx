@@ -1,0 +1,22 @@
+import React, { FC } from 'react'
+import { Color } from '../../../Utils/Constans'
+
+type SubjectProps = {
+  width?: string,
+  height?: string,
+  color?: string,
+}
+
+const Subject: FC<SubjectProps> = ({
+  width = '32',
+  height = '32',
+  color = Color.white,
+}) => (
+  <svg width={width} height={height} viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path d='M6 7H12C13.0609 7 14.0783 7.42143 14.8284 8.17157C15.5786 8.92172 16 9.93913 16 11V25C16 24.2043 15.6839 23.4413 15.1213 22.8787C14.5587 22.3161 13.7956 22 13 22H6V7Z' stroke={color} strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+    <path d='M16 25V11C16 9.93915 16.4214 8.92173 17.1716 8.17159C17.9217 7.42144 18.9391 7.00002 20 7.00002H26V22H19' stroke={color} strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+  </svg>
+
+)
+
+export default Subject
