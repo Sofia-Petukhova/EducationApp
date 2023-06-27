@@ -14,10 +14,14 @@ import {
   inputCss,
   lastInputCss,
 } from './AuthStyled'
+
 import LogoEtuFlow from '../UI/Icons/LogoEtuFlow'
 import Input from '../UI/Inputs/Input/Input'
 import { emailRegExp, passwordRegExp } from '../../Utils/regExp'
 import Button from '../UI/Button/Button'
+import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
+import { createAuthSelectors, fetchAccount } from '../../Redux/AccountSlice/AccountSlice'
+import { AuthValues } from '../../Redux/AccountSlice/AccountSliceTypes'
 import Loader from '../UI/Loader/Loader'
 
 const validationSchema = Yup.object().shape({
@@ -34,11 +38,6 @@ const validationSchema = Yup.object().shape({
 
 type AuthFormProps = {
   handelAuth: (data: { password: string, email: string }) => void,
-}
-
-type AuthValues = {
-  email: string,
-  password: string,
 }
 
 const initialValues: AuthValues = {
@@ -93,6 +92,23 @@ const AuthForm: React.FC<AuthFormProps & FormikProps<AuthValues>> = ({
 
 const Auth: React.FC = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const isLoading = useAppSelector(createAuthSelectors.isLoadingAuth)
+
+  const handleAuth = (data: AuthValues) => {
+    dispatch(fetchAccount({
+      data,
+      successCallback: () => navigate('/EtuFlow/Home/News'),
+    }))
+  }
+
+  if (isLoading) {
+    return (
+      <WrapperLoader>
+        <Loader />
+      </WrapperLoader>
+    )
+  }
 
   return (
     <Container>
@@ -108,7 +124,7 @@ const Auth: React.FC = () => {
           {(formikProps) => (
             <AuthForm
               {...formikProps}
-              handelAuth={() => {}}
+              handelAuth={handleAuth}
             />
           )}
         </Formik>
