@@ -107,7 +107,8 @@ export const Time = styled.div`
 export const buttonAddCss = css`
   width: ${remCalc(165)};
   height: ${remCalc(24)};
-  font-weight: 500;
+  border: 0;
+  font-weight: 400;
   font-size: ${remCalc(17)};
   line-height: ${remCalc(22)};
   color: ${Color.black};
@@ -116,8 +117,10 @@ export const buttonAddCss = css`
 
   &:hover {
     cursor: pointer;
+    border: 0;
     color: ${Color.white};
     background-color: ${Color.blueDark};
+    background-color: transparent;
   }
 `
 export const Subject = styled.div`
@@ -187,5 +190,11 @@ export const buttonIconCss = css`
 
   :hover {
     background: transparent; 
+  }
+  border: 0;
+  &:hover {
+    background: transparent;
+    padding: 0;
+    border: 0;
   }
 `
