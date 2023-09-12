@@ -105,20 +105,20 @@ export const Time = styled.div`
   margin-bottom: ${remCalc(5)};
 `
 export const buttonAddCss = css`
-  width: ${remCalc(159)};
-  height: ${remCalc(22)};
+  width: ${remCalc(165)};
+  height: ${remCalc(24)};
   border: 0;
   font-weight: 400;
-  font-size: 17px;
-  line-height: 130%;
+  font-size: ${remCalc(17)};
+  line-height: ${remCalc(22)};
   color: ${Color.black};
   background-color: transparent;
 
   &:hover {
     cursor: pointer;
     border: 0;
-    color: ${Color.blueDark};
-    background-color: transparent;
+    color: ${Color.white};
+    background-color: ${Color.blueDark};
   }
 `
 export const Subject = styled.div`
@@ -185,6 +185,7 @@ export const buttonIconCss = css`
   background: transparent;
   padding: 0;
   border: 0;
+
   &:hover {
     background: transparent;
     padding: 0;
